@@ -1,13 +1,9 @@
 node {
   stage('One') {
-    steps {
-      echo 'Hi, this is Zulaikha from edureka'
-    }
+    echo 'Hi, this is Zulaikha from edureka'
   }
   stage('Two') {
-    steps {
-      input('Do you want to proceed?')
-    }
+    input('Do you want to proceed?')
   }
   stage('Three') {
     when {
@@ -15,16 +11,12 @@ node {
         branch "master"
       }
     }
-    steps {
-      echo "Hello"
-    }
+    echo "Hello"
   }
   stage('Four') {
     parallel { 
       stage('Unit Test') {
-        steps {
-          echo "Running the unit test..."
-        }
+        echo "Running the unit test..."
       }
     }
   }
