@@ -10,7 +10,7 @@ resource "aws_security_group" "raddit" {
   }
 }
 resource "aws_instance" "raddit" {
-  ami 		  = ""
+  ami 		  = "${var.ami_id}"
   instance_type   = "t2.micro"
   security_groups = ["${aws_security_group.raddit.name}"]
 
