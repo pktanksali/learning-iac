@@ -8,7 +8,7 @@ node {
     sh "echo ${AMI_ID}"
   }
   stage('Launch EC2 Instance') {
-    sh "cd \${WORKSPACE}/terraform; terraform init; terraform apply -var \"access_key=\${ACCESS_KEY}\" -var \"secret_key=\${SECRET_KEY}\" -var \"ami_id=\${AMI_ID}\"
+    sh "cd \${WORKSPACE}/terraform; terraform init; terraform apply -var \"access_key=\${ACCESS_KEY}\" -var \"secret_key=\${SECRET_KEY}\" -var \"ami_id=\${AMI_ID}\""
     env.PUBLIC_IP = sh ( script: 'cd "${WORKSPACE}/terraform"; terraform output raddit_public_ip', returnStdout: true).trim()
     sh "echo ${PUBLIC_IP}"
   }
