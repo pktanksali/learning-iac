@@ -12,7 +12,7 @@ node {
     env.PUBLIC_IP = sh ( script: 'cd "${WORKSPACE}/terraform"; terraform output raddit_public_ip', returnStdout: true).trim()
     sh 'echo "${env.PUBLIC_IP}"'
   }
-  stage('Four') {
-    echo "Running the unit test..."
+  stage('Cleanup') {
+    cleanWs()
   }
 }
