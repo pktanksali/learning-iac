@@ -25,5 +25,10 @@
     "type": "shell",
     "script": "{{template_dir}}/scripts/configuration.sh",
     "execute_command": "sudo {{.Path}}"
+  }],
+  "post-processors": [{
+    "type": "manifest",
+    "output": "manifest.json",
+    "strip_path": true
   }]
 }
