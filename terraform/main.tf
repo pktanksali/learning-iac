@@ -10,7 +10,7 @@ resource "aws_security_group" "raddit" {
   }
 }
 resource "aws_instance" "raddit" {
-  ami 		  = "ami-0b5c90103bebc9c57"
+  ami 		  = ""
   instance_type   = "t2.micro"
   security_groups = ["${aws_security_group.raddit.name}"]
 
