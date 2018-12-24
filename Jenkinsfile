@@ -12,7 +12,7 @@ node {
     env.PUBLIC_IP = sh ( script: 'cd "${WORKSPACE}/terraform"; terraform output raddit_public_ip', returnStdout: true).trim()
     sh "echo ${PUBLIC_IP}"
   }
-  stage('Deploy application on EC2 Instance') {
+  stage('Deploy Application on EC2') {
     sh "cd \${WORKSPACE}/ansible; ansible-playbook -c local ./generate_hosts.yml"
     ansiColor('xterm') {
       ansiblePlaybook inventory: './ansible/hosts.yml', playbook: './ansible/main.yml', colorized: true
