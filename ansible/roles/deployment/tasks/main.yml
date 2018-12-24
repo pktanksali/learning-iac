@@ -1,0 +1,21 @@
+---
+- name: Fetch the latest version of application code
+  block:
+    - git:
+       repo: 'https://github.com/pktanksali/learning-iac.git'
+       dest: /home/raddit-user/learning-iac
+      register: clone
+    - synchronize: 
+       src: /home/raddit-user/learning-iac/raddit
+       dest: /home/raddit-user
+      delegate_to: "{{ inventory_hostname }}" 
+  become: true
+  become_user: raddit-user
+
+- name: Install application dependencies
+  become: true
+  bundler:
+   state: present
+   chdir: /home/raddit-user/raddit
+  when: clone.changed
+  notify: restart raddit

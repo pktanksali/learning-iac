@@ -1,0 +1,6 @@
+---
+
+- hosts: raddit-app
+  roles:
+   - prerequisites
+   - deployment

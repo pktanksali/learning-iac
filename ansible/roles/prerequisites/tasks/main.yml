@@ -1,0 +1,19 @@
+---
+- name: Create raddit-user
+  become: true
+  user:
+   name: raddit-user
+   shell: /bin/bash
+   group: sudo
+   create_home: yes
+   append: yes
+   comment: "Deploy user"
+
+- name: Set passwordless sudo
+  become: true
+  lineinfile:
+   path: /etc/sudoers
+   state: present
+   regexp: '^%sudo'
+   line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+   validate: 'visudo -cf %s'

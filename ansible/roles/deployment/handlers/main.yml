@@ -1,0 +1,4 @@
+---
+- name: restart raddit
+  become: true
+  systemd: name=raddit state=restarted
