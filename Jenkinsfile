@@ -22,6 +22,7 @@ node {
     input('QA Approval...')
   } 
   stage('Cleanup') {
+    sh "cd \${WORKSPACE}/terraform; terraform destroy -auto-approve -var \"access_key=\${ACCESS_KEY}\" -var \"secret_key=\${SECRET_KEY}\" -var \"ami_id=\${AMI_ID}\""
     cleanWs()
   }
 }
